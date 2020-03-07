@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="{% url 'index' %}">DJANGO</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		    <ul class="navbar-nav">
+		      <li class="nav-item">
+		        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="{% url 'levfiv:register' %}">Register</a>
+		      </li>
+		      {% if user.is_authenticated %}
+		      <li class="nav-item">
+		        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+		      </li>
+		      {% else %}
+		      	<li class="nav-item">
+		        <a class="nav-link" href="{% url 'levfiv:user_login' %}">Login</a>
+		      </li>
+		      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+	
+	<div class="container">
+	{% block body_block %}
+	{% endblock %}
+
+	</div>
+</body>
+</html>
